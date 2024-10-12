@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Runtime.InteropServices.JavaScript;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Models;
 
@@ -18,6 +19,11 @@ public class HomeController : Controller
         return View();
     }
     public IActionResult About()
+    {
+        return View();
+    }
+    
+    public IActionResult Privacy()
     {
         return View();
     }
@@ -64,9 +70,43 @@ public class HomeController : Controller
         ViewBag.Y = y;
         return View();
     }
-
-    public IActionResult Privacy()
+    public IActionResult Age(DateTime date)
     {
+        DateTime today = DateTime.Today;
+        
+        int years;
+        int months;
+        int days;
+        int daysofyear = 0;
+        
+        if (date.Date > today)
+        {
+            ViewBag.Error("Nie możesz mieć urodziń w przyszłości");
+            return View();
+        }
+
+        if (date.Month < today.Month)
+        {
+            years = today.Year - date.Year ;
+            months = years * 12;
+            days = today.Subtract(date).Days;
+        }else if (date.Day == today.Day && date.Month == today.Month)
+        {
+            years = today.Year - date.Year ;
+            months = years * 12;
+            days = today.Subtract(date).Days;
+        }
+        else
+        {
+            years = today.Year - date.Year;
+            months = years * 12;
+            days = today.Subtract(date).Days;
+        }
+        
+        ViewBag.Birhtday = date;
+        ViewBag.Years = years;
+        ViewBag.Months = months;
+        ViewBag.Days = days;
         return View();
     }
     

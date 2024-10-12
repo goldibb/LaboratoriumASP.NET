@@ -1,0 +1,19 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Wiek";
+}
+
+<h2>Wiek</h2>
+
+@if(ViewBag.Error != null)
+{
+    <div style="color: red;">@ViewBag.Error</div>
+}
+else
+{
+    <p>Data urodzenia: @ViewBag.Birhtday.ToString("dd-MM-yyyy")</p>
+    <p>Lata: @ViewBag.Years</p>
+    <p>Miesiące: @ViewBag.Months</p>
+    <p>Dni: @ViewBag.Days</p>
+}
