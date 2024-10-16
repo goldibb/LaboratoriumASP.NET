@@ -22,7 +22,7 @@ public class HomeController : Controller
         return View();
     }
     
-    public IActionResult Calculator(Operator? op, double? x, double? y)
+    public IActionResult Calculator(Operators? op, double? x, double? y)
     {
         //var op = Request.Query["op"];
         //var x = double.Parse(Request.Query["x"]);
@@ -41,19 +41,19 @@ public class HomeController : Controller
         double? result = 0.0d;
         switch (op)
         {
-            case Operator.Add:
+            case Operators.Add:
                 result = x + y;
                 ViewBag.Operator = "+";
                 break;
-            case Operator.Sub:
+            case Operators.Sub:
                 result = x - y;
                 ViewBag.Operator = "-";
                 break;
-            case Operator.Mul:
+            case Operators.Mul:
                 ViewBag.Operator = "*";
                 result = x * y;
                 break;
-            case Operator.Div:
+            case Operators.Div:
                 ViewBag.Operator = "/";
                 result = x / y;
                 break;
@@ -70,14 +70,14 @@ public class HomeController : Controller
         return View();
     }
     
-    public enum Operator
-    {
-        Add,Sub,Mul,Div
-    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+}
+public enum Operators
+{
+    Add,Sub,Mul,Div
 }
