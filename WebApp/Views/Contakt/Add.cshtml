@@ -1,0 +1,37 @@
+﻿@model ContactModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Dodaj kontakt</h2>
+<form asp-action="Add" method="post">
+    <div class="mb-3">
+        <label class="form-label" asp-for="FirstName">Imię</label>
+        <input class="form-control" asp-for="FirstName"/>
+        <span asp-validation-for="FirstName"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="LastName">Nazwisko</label>
+        <input class="form-control" asp-for="LastName"/>
+        <span asp-validation-for="LastName"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Email">Email</label>
+        <input class="form-control" asp-for="Email"/>
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="phoneNumber">Numer</label>
+        <input class="form-control" asp-for="phoneNumber"/>
+        <span asp-validation-for="phoneNumber"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Birthday">Data urodzin</label>
+        <input class="form-control" asp-for="Birthday"/>
+        <span asp-validation-for="Birthday"></span>
+    </div>
+    <button type="submit" class="btn btn-outline-primary">Dodaj</button>
+    <button type="reset" class="btn btn-danger">Reset</button>
+</form>

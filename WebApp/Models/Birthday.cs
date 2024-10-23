@@ -18,8 +18,7 @@
             }
 
             DateTime today = DateTime.Now;
-            int age = today.Year - Date.Value.Year;
-            if (Date.Value.Date > today.AddYears(-age)) throw new InvalidOperationException("Nie możesz mieć urodzin w przyszłości");; // Poprawka wieku, jeśli urodziny jeszcze nie były w tym roku
+            int age = today.Year - Date.Value.Year; 
             return age;
         }
     }
